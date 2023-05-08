@@ -1,0 +1,3 @@
+import { InferredTypeMap } from 'ra-core';
+export declare const showFieldTypes: InferredTypeMap;
+//# sourceMappingURL=showFieldTypes.d.ts.map

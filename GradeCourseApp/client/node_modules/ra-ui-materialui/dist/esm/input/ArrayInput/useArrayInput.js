@@ -1,0 +1,27 @@
+import { useContext, useMemo } from 'react';
+import { ArrayInputContext } from './ArrayInputContext';
+/**
+ * A hook to access an array input methods as provided by react-hook-form.
+ * Useful to create custom array input iterators.
+ * @see {ArrayInput}
+ * @see https://react-hook-form.com/api/usefieldarray
+ */
+export var useArrayInput = function (props) {
+    var context = useContext(ArrayInputContext);
+    var memo = useMemo(function () { return ({
+        append: props === null || props === void 0 ? void 0 : props.append,
+        fields: props === null || props === void 0 ? void 0 : props.fields,
+        insert: props === null || props === void 0 ? void 0 : props.insert,
+        move: props === null || props === void 0 ? void 0 : props.move,
+        prepend: props === null || props === void 0 ? void 0 : props.prepend,
+        remove: props === null || props === void 0 ? void 0 : props.remove,
+        replace: props === null || props === void 0 ? void 0 : props.replace,
+        swap: props === null || props === void 0 ? void 0 : props.swap,
+        update: props === null || props === void 0 ? void 0 : props.update,
+    }); }, [props]);
+    if (props === null || props === void 0 ? void 0 : props.fields) {
+        return memo;
+    }
+    return context;
+};
+//# sourceMappingURL=useArrayInput.js.map

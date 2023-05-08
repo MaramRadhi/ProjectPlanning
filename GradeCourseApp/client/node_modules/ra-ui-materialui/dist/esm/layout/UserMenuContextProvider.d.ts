@@ -1,0 +1,17 @@
+import { ReactNode } from 'react';
+import { UserMenuContextValue } from './UserMenuContext';
+/**
+ * A React context provider that provides access to the user menu context.
+ * @param props
+ * @param {ReactNode} props.children
+ * @param {UserMenuContextValue} props.value The user menu context
+ */
+export declare const UserMenuContextProvider: ({ children, value }: {
+    children: any;
+    value: any;
+}) => JSX.Element;
+export declare type UserMenuContextProviderProps = {
+    children: ReactNode;
+    value: UserMenuContextValue;
+};
+//# sourceMappingURL=UserMenuContextProvider.d.ts.map

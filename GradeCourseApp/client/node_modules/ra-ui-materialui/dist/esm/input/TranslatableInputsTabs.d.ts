@@ -1,0 +1,17 @@
+import { ReactElement } from 'react';
+import { TabsProps } from '@mui/material';
+import { AppBarProps } from '../layout';
+/**
+ * Default locale selector for the TranslatableInputs component. Generates a tab for each specified locale.
+ * @see TranslatableInputs
+ */
+export declare const TranslatableInputsTabs: (props: TranslatableInputsTabsProps & AppBarProps) => ReactElement;
+export interface TranslatableInputsTabsProps {
+    groupKey?: string;
+    TabsProps?: TabsProps;
+}
+export declare const TranslatableInputsTabsClasses: {
+    root: string;
+    tabs: string;
+};
+//# sourceMappingURL=TranslatableInputsTabs.d.ts.map

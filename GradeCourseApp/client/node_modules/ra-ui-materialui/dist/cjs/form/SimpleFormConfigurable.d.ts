@@ -1,0 +1,36 @@
+/// <reference types="react" />
+import { SimpleFormProps } from './SimpleForm';
+export declare const SimpleFormConfigurable: ({ preferenceKey, omit, ...props }: SimpleFormConfigurableProps) => JSX.Element;
+export interface SimpleFormConfigurableProps extends SimpleFormProps {
+    /**
+     * Key to use to store the user's preferences for this SimpleForm.
+     *
+     * Set to '[resource].simpleForm' by default. Pass a custom key if you need
+     * to display more than one SimpleFormConfigurable per resource.
+     */
+    preferenceKey?: string;
+    /**
+     * columns to hide by default
+     *
+     * @example
+     * // by default, hide the id and author columns
+     * // users can choose to show show them in configuration mode
+     * const PostEdit = () => (
+     *     <Edit>
+     *         <SimpleFormConfigurable omit={['id', 'author']}>
+     *             <TextInput source="id" />
+     *             <TextInput source="title" />
+     *             <TextInput source="author" />
+     *             <TextInput source="year" />
+     *         </SimpleFormConfigurable>
+     *     </Edit>
+     * );
+     */
+    omit?: string[];
+}
+export interface SimpleFormConfigurableColumn {
+    index: string;
+    source: string;
+    label?: string;
+}
+//# sourceMappingURL=SimpleFormConfigurable.d.ts.map

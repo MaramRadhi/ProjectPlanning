@@ -1,0 +1,1 @@
+{"version":3,"file":"AdminUI.d.ts","sourceRoot":"","sources":["../../src/AdminUI.tsx"],"names":[],"mappings":"AACA,OAAO,EAAiB,aAAa,EAAE,MAAM,OAAO,CAAC;AACrD,OAAO,EAAe,gBAAgB,EAAE,MAAM,SAAS,CAAC;AAWxD,eAAO,MAAM,OAAO;iCAAgC,YAAY;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;CAK/D,CAAC;AAEF,MAAM,WAAW,YAAa,SAAQ,gBAAgB;IAClD,YAAY,CAAC,EAAE,aAAa,CAAC;CAChC"}

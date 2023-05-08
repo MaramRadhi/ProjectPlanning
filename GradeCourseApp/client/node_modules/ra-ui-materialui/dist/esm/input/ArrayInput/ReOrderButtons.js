@@ -1,0 +1,15 @@
+import * as React from 'react';
+import { IconButtonWithTooltip } from '../../button';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowCircleUp';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowCircleDown';
+import { useSimpleFormIteratorItem } from './useSimpleFormIteratorItem';
+export var ReOrderButtons = function (_a) {
+    var className = _a.className;
+    var _b = useSimpleFormIteratorItem(), index = _b.index, total = _b.total, reOrder = _b.reOrder;
+    return (React.createElement("span", { className: className },
+        React.createElement(IconButtonWithTooltip, { label: "ra.action.move_up", size: "small", onClick: function () { return reOrder(index - 1); }, disabled: index <= 0, color: "primary" },
+            React.createElement(ArrowUpwardIcon, { fontSize: "small" })),
+        React.createElement(IconButtonWithTooltip, { label: "ra.action.move_down", size: "small", onClick: function () { return reOrder(index + 1); }, disabled: total == null || index >= total - 1, color: "primary" },
+            React.createElement(ArrowDownwardIcon, { fontSize: "small" }))));
+};
+//# sourceMappingURL=ReOrderButtons.js.map

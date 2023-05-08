@@ -1,0 +1,123 @@
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+import * as React from 'react';
+import { cloneElement, useCallback } from 'react';
+import clsx from 'clsx';
+import { ListContextProvider, useChoicesContext, useInput, } from 'ra-core';
+import { InputHelperText } from './InputHelperText';
+import { Datagrid } from '../list/datagrid';
+import { FilterButton, FilterForm } from '../list/filter';
+import { FilterContext } from '../list/FilterContext';
+import { Pagination as DefaultPagination } from '../list/pagination';
+var defaultPagination = React.createElement(DefaultPagination, null);
+/**
+ * WIP: This component is not yet ready to be used.
+ *
+ * An input for selecting items displayed in a datagrid
+ *
+ * @example
+ * const membersFilters = [
+ *     <TextInput label="Search" source="q" alwaysOn />,
+ * ];
+ * const TeamEdit = () => (
+ *    <Edit>
+ *        <SimpleForm>
+ *            <TextInput source="name" />
+ *            <ReferenceArrayInput
+ *                source="members"
+ *                reference="users"
+ *                filter={{ is_retired: false }}
+ *                perPage={50}
+ *                sort={{ field: 'lastName', order: 'ASC' }}
+ *            >
+ *                <DatagridInput
+ *                    filters={membersFilters}
+ *                >
+ *                    <TextField source="firstName" />
+ *                    <TextField source="lastName" />
+ *                </DatagridInput>
+ *            </ReferenceArrayInput>
+ *        </SimpleForm>
+ *    </Edit>
+ * );
+ */
+export var DatagridInput = function (props) {
+    var _a;
+    var choices = props.choices, className = props.className, _b = props.pagination, pagination = _b === void 0 ? defaultPagination : _b, filters = props.filters, sourceProp = props.source, resourceProp = props.resource, rest = __rest(props, ["choices", "className", "pagination", "filters", "source", "resource"]);
+    var _c = useChoicesContext({
+        choices: choices,
+        resource: resourceProp,
+        source: sourceProp,
+    }), allChoices = _c.allChoices, availableChoices = _c.availableChoices, selectedChoices = _c.selectedChoices, fetchError = _c.error, source = _c.source, choicesContext = __rest(_c, ["allChoices", "availableChoices", "selectedChoices", "error", "source"]);
+    var _d = useInput(__assign(__assign(__assign({}, props), choicesContext), { source: source })), field = _d.field, fieldState = _d.fieldState, formState = _d.formState;
+    var onSelect = useCallback(function (idsToAdd) {
+        field.onChange(idsToAdd);
+    }, [field]);
+    var onToggleItem = useCallback(function (id) {
+        if (field.value.includes(id)) {
+            field.onChange(field.value.filter(function (item) { return item !== id; }));
+        }
+        else {
+            field.onChange(__spreadArray(__spreadArray([], field.value, true), [id], false));
+        }
+    }, [field]);
+    var onUnselectItems = useCallback(function () {
+        field.onChange([]);
+    }, [field]);
+    var listContext = React.useMemo(function () { return (__assign(__assign({}, choicesContext), { data: availableChoices, onSelect: onSelect, onToggleItem: onToggleItem, onUnselectItems: onUnselectItems, selectedIds: field.value })); }, [
+        availableChoices,
+        choicesContext,
+        field,
+        onSelect,
+        onToggleItem,
+        onUnselectItems,
+    ]);
+    return (React.createElement("div", { className: clsx('ra-input', "ra-input-".concat(source), className) },
+        React.createElement(ListContextProvider, { value: listContext },
+            filters ? (Array.isArray(filters) ? (React.createElement(FilterContext.Provider, { value: filters },
+                React.createElement(React.Fragment, null,
+                    React.createElement(FilterForm, null),
+                    React.createElement(FilterButton, null)))) : (React.createElement(React.Fragment, null,
+                cloneElement(filters, {
+                    context: 'form',
+                }),
+                cloneElement(filters, {
+                    context: 'button',
+                })))) : null,
+            !fieldState.error && !fetchError && (React.createElement(React.Fragment, null,
+                React.createElement(Datagrid, __assign({}, rest)),
+                pagination !== false && pagination)),
+            React.createElement(InputHelperText, { touched: fieldState.isTouched ||
+                    formState.isSubmitted ||
+                    fetchError, error: ((_a = fieldState.error) === null || _a === void 0 ? void 0 : _a.message) || (fetchError === null || fetchError === void 0 ? void 0 : fetchError.message) }))));
+};
+//# sourceMappingURL=DatagridInput.js.map

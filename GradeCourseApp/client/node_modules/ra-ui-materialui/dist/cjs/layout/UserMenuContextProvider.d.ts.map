@@ -1,0 +1,1 @@
+{"version":3,"file":"UserMenuContextProvider.d.ts","sourceRoot":"","sources":["../../../src/layout/UserMenuContextProvider.tsx"],"names":[],"mappings":"AACA,OAAO,EAAE,SAAS,EAAE,MAAM,OAAO,CAAC;AAClC,OAAO,EAAmB,oBAAoB,EAAE,MAAM,mBAAmB,CAAC;AAE1E;;;;;GAKG;AACH,eAAO,MAAM,uBAAuB;;;iBAInC,CAAC;AAEF,oBAAY,4BAA4B,GAAG;IACvC,QAAQ,EAAE,SAAS,CAAC;IACpB,KAAK,EAAE,oBAAoB,CAAC;CAC/B,CAAC"}

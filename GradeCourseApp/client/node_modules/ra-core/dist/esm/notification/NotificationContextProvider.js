@@ -1,0 +1,40 @@
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+import * as React from 'react';
+import { useState, useCallback, useMemo } from 'react';
+import { NotificationContext } from './NotificationContext';
+import { AddNotificationContext } from './AddNotificationContext';
+export var NotificationContextProvider = function (_a) {
+    var children = _a.children;
+    var _b = useState([]), notifications = _b[0], setNotifications = _b[1];
+    var addNotification = useCallback(function (notification) {
+        setNotifications(function (notifications) { return __spreadArray(__spreadArray([], notifications, true), [notification], false); });
+    }, []);
+    var takeNotification = useCallback(function () {
+        var notification = notifications[0], rest = notifications.slice(1);
+        setNotifications(rest);
+        return notification;
+    }, [notifications]);
+    var resetNotifications = useCallback(function () {
+        setNotifications([]);
+    }, []);
+    var contextValue = useMemo(function () { return ({
+        notifications: notifications,
+        addNotification: addNotification,
+        takeNotification: takeNotification,
+        resetNotifications: resetNotifications,
+    }); }, [notifications] // eslint-disable-line react-hooks/exhaustive-deps
+    );
+    // we separate the addNotification context to avoid rerendering all components
+    // that depend on useNotify when a notification is dispatched
+    return (React.createElement(NotificationContext.Provider, { value: contextValue },
+        React.createElement(AddNotificationContext.Provider, { value: addNotification }, children)));
+};
+//# sourceMappingURL=NotificationContextProvider.js.map

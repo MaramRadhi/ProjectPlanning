@@ -1,0 +1,139 @@
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var react_1 = require("react");
+var react_router_dom_1 = require("react-router-dom");
+var react_query_1 = require("react-query");
+var useAuthProvider_1 = __importStar(require("./useAuthProvider"));
+var store_1 = require("../store");
+var routing_1 = require("../routing");
+var useCreatePath_1 = require("../routing/useCreatePath");
+/**
+ * Get a callback for calling the authProvider.logout() method,
+ * redirect to the login page, and clear the store.
+ *
+ * @see useAuthProvider
+ *
+ * @returns {Function} logout callback
+ *
+ * @example
+ *
+ * import { useLogout } from 'react-admin';
+ *
+ * const LogoutButton = () => {
+ *     const logout = useLogout();
+ *     const handleClick = () => logout();
+ *     return <button onClick={handleClick}>Logout</button>;
+ * }
+ */
+var useLogout = function () {
+    var authProvider = (0, useAuthProvider_1.default)();
+    var queryClient = (0, react_query_1.useQueryClient)();
+    var resetStore = (0, store_1.useResetStore)();
+    var navigate = (0, react_router_dom_1.useNavigate)();
+    // useNavigate forces rerenders on every navigation, even if we don't use the result
+    // see https://github.com/remix-run/react-router/issues/7634
+    // so we use a ref to bail out of rerenders when we don't need to
+    var navigateRef = (0, react_1.useRef)(navigate);
+    var location = (0, react_router_dom_1.useLocation)();
+    var locationRef = (0, react_1.useRef)(location);
+    var basename = (0, routing_1.useBasename)();
+    var loginUrl = (0, useCreatePath_1.removeDoubleSlashes)("".concat(basename, "/").concat(useAuthProvider_1.defaultAuthParams.loginUrl));
+    /*
+     * We need the current location to pass in the router state
+     * so that the login hook knows where to redirect to as next route after login.
+     *
+     * But if we used the location from useLocation as a dependency of the logout
+     * function, it would be rebuilt each time the user changes location.
+     * Consequently, that would force a rerender of all components using this hook
+     * upon navigation (CoreAdminRouter for example).
+     *
+     * To avoid that, we store the location in a ref.
+     */
+    (0, react_1.useEffect)(function () {
+        locationRef.current = location;
+        navigateRef.current = navigate;
+    }, [location, navigate]);
+    var logout = (0, react_1.useCallback)(function (params, redirectTo, redirectToCurrentLocationAfterLogin) {
+        if (params === void 0) { params = {}; }
+        if (redirectTo === void 0) { redirectTo = loginUrl; }
+        if (redirectToCurrentLocationAfterLogin === void 0) { redirectToCurrentLocationAfterLogin = true; }
+        return authProvider.logout(params).then(function (redirectToFromProvider) {
+            if (redirectToFromProvider === false || redirectTo === false) {
+                resetStore();
+                queryClient.clear();
+                // do not redirect
+                return;
+            }
+            var finalRedirectTo = redirectToFromProvider || redirectTo;
+            if (finalRedirectTo === null || finalRedirectTo === void 0 ? void 0 : finalRedirectTo.startsWith('http')) {
+                // absolute link (e.g. https://my.oidc.server/login)
+                resetStore();
+                queryClient.clear();
+                window.location.href = finalRedirectTo;
+                return finalRedirectTo;
+            }
+            // redirectTo is an internal location that may contain a query string, e.g. '/login?foo=bar'
+            // we must split it to pass a structured location to navigate()
+            var redirectToParts = finalRedirectTo.split('?');
+            var newLocation = {
+                pathname: redirectToParts[0],
+            };
+            var newLocationOptions = {};
+            if (redirectToCurrentLocationAfterLogin &&
+                locationRef.current &&
+                locationRef.current.pathname) {
+                newLocationOptions = {
+                    state: {
+                        nextPathname: locationRef.current.pathname,
+                        nextSearch: locationRef.current.search,
+                    },
+                };
+            }
+            if (redirectToParts[1]) {
+                newLocation.search = redirectToParts[1];
+            }
+            navigateRef.current(newLocation, newLocationOptions);
+            resetStore();
+            queryClient.clear();
+            return redirectToFromProvider;
+        });
+    }, [authProvider, resetStore, loginUrl, queryClient]);
+    var logoutWithoutProvider = (0, react_1.useCallback)(function (_) {
+        navigate({
+            pathname: loginUrl,
+        }, {
+            state: {
+                nextPathname: location && location.pathname,
+            },
+        });
+        resetStore();
+        queryClient.clear();
+        return Promise.resolve();
+    }, [resetStore, location, navigate, loginUrl, queryClient]);
+    return authProvider ? logout : logoutWithoutProvider;
+};
+exports.default = useLogout;
+//# sourceMappingURL=useLogout.js.map

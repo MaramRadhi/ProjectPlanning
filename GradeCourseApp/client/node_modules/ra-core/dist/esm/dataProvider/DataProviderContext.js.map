@@ -1,0 +1,1 @@
+{"version":3,"file":"DataProviderContext.js","sourceRoot":"","sources":["../../../src/dataProvider/DataProviderContext.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAAE,MAAM,OAAO,CAAC;AAItC,IAAM,mBAAmB,GAAG,aAAa,CAAe,IAAI,CAAC,CAAC;AAE9D,mBAAmB,CAAC,WAAW,GAAG,qBAAqB,CAAC;AAExD,eAAe,mBAAmB,CAAC"}

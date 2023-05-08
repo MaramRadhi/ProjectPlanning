@@ -1,0 +1,1 @@
+{"version":3,"file":"ComponentPropType.js","sourceRoot":"","sources":["../../../src/util/ComponentPropType.ts"],"names":[],"mappings":";;AAAA,qCAA8C;AAE9C,mBAAe,UAAC,KAAK,EAAE,QAAQ,EAAE,aAAa;IAC1C,IAAI,KAAK,CAAC,QAAQ,CAAC,IAAI,CAAC,IAAA,6BAAkB,EAAC,KAAK,CAAC,QAAQ,CAAC,CAAC,EAAE;QACzD,OAAO,IAAI,KAAK,CACZ,wBAAiB,QAAQ,4BAAkB,aAAa,+CAA4C,CACvG,CAAC;KACL;AACL,CAAC,EAAC"}

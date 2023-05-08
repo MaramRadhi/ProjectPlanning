@@ -1,0 +1,28 @@
+import { ReactNode } from 'react';
+import { ShowControllerResult } from './useShowController';
+/**
+ * Create a Show Context.
+ *
+ * @example
+ *
+ * const MyShow = (props) => {
+ *     const controllerProps = useShowController(props);
+ *     return (
+ *         <ShowContextProvider value={controllerProps}>
+ *             <MyShowView>
+ *         </ShowContextProvider>
+ *     );
+ * };
+ *
+ * const MyShowView = () => {
+ *     const record = useRecordContext();
+ * }
+ *
+ * @see ShowContext
+ * @see RecordContext
+ */
+export declare const ShowContextProvider: ({ children, value, }: {
+    children: ReactNode;
+    value: ShowControllerResult;
+}) => JSX.Element;
+//# sourceMappingURL=ShowContextProvider.d.ts.map

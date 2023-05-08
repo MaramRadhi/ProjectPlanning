@@ -1,0 +1,1 @@
+{"version":3,"file":"useRecordSelection.d.ts","sourceRoot":"","sources":["../../../../src/controller/list/useRecordSelection.ts"],"names":[],"mappings":"AAGA,OAAO,EAAE,UAAU,EAAE,MAAM,aAAa,CAAC;AAEzC;;;;;;GAMG;AACH,eAAO,MAAM,kBAAkB,aACjB,MAAM;kBAIE,UAAU,EAAE,KAAK,IAAI;oBACnB,UAAU,EAAE,KAAK,IAAI;iBACxB,UAAU,KAAK,IAAI;oBAChB,MAAM,IAAI;EAsCjC,CAAC"}

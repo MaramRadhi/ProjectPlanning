@@ -1,0 +1,1 @@
+{"version":3,"file":"StoreSetter.d.ts","sourceRoot":"","sources":["../../../src/store/StoreSetter.tsx"],"names":[],"mappings":"AACA,OAAO,EAAa,SAAS,EAAE,MAAM,OAAO,CAAC;AAG7C;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA6BG;AACH,eAAO,MAAM,WAAW,8BAA+B,gBAAgB,gBAQtE,CAAC;AAEF,MAAM,WAAW,gBAAgB;IAC7B,IAAI,EAAE,MAAM,CAAC;IACb,KAAK,EAAE,GAAG,CAAC;IACX,QAAQ,EAAE,SAAS,CAAC;CACvB"}

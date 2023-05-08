@@ -1,0 +1,28 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.useLocale = void 0;
+var useLocaleState_1 = require("./useLocaleState");
+/**
+ * Get the current locale
+ *
+ * @example
+ *
+ * import { useLocale } from 'react-admin';
+ *
+ * const availableLanguages = {
+ *     en: 'English',
+ *     fr: 'Français',
+ * }
+ * const CurrentLanguage = () => {
+ *     const locale = useLocale();
+ *     return <span>{availableLanguages[locale]}</span>;
+ * }
+ *
+ * @deprecated use useLocaleState instead
+ */
+var useLocale = function () {
+    var locale = (0, useLocaleState_1.useLocaleState)()[0];
+    return locale;
+};
+exports.useLocale = useLocale;
+//# sourceMappingURL=useLocale.js.map

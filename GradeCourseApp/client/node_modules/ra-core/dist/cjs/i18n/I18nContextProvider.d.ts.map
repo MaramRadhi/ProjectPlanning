@@ -1,0 +1,1 @@
+{"version":3,"file":"I18nContextProvider.d.ts","sourceRoot":"","sources":["../../../src/i18n/I18nContextProvider.tsx"],"names":[],"mappings":"AACA,OAAO,EAAuB,SAAS,EAAE,MAAM,OAAO,CAAC;AAKvD,OAAO,EAAE,YAAY,EAAE,MAAM,UAAU,CAAC;AAExC;;GAEG;AACH,eAAO,MAAM,mBAAmB,yBAG7B,wBAAwB,gBAwC1B,CAAC;AAEF,MAAM,WAAW,wBAAwB;IACrC,KAAK,EAAE,YAAY,CAAC;IACpB,QAAQ,EAAE,SAAS,CAAC;CACvB"}

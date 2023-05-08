@@ -1,0 +1,1 @@
+{"version":3,"file":"usePermissionsOptimized.js","sourceRoot":"","sources":["../../../src/auth/usePermissionsOptimized.ts"],"names":[],"mappings":"AAAA,OAAO,cAAc,MAAM,kBAAkB,CAAC;AAE9C,IAAM,WAAW,GAAG,EAAE,CAAC;AAEvB;;;;GAIG;AACH,IAAM,uBAAuB,GAAG,UAAC,MAAoB;IAApB,uBAAA,EAAA,oBAAoB;IACjD,OAAO,cAAc,CAAC,MAAM,CAAC,CAAC;AAClC,CAAC,CAAC;AAEF,eAAe,uBAAuB,CAAC"}

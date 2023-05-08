@@ -1,0 +1,33 @@
+/// <reference types="react" />
+import { ResourceDefinition } from '../types';
+/**
+ * Hook to get the definition of a given resource
+ *
+ * @example // Get the current resource definition (based on ResourceContext)
+ *
+ * const definition = useResourceDefinition();
+ * console.log(definition);
+ * // {
+ * //   name: 'posts',
+ * //   hasList: true,
+ * //   hasEdit: true,
+ * //   hasShow: true,
+ * //   hasCreate: true,
+ * //   options: {},
+ * //   icon: PostIcon,
+ * // }
+ *
+ * @example // Pass a resource prop to check a different resource definition
+ *
+ * const definition = useResourceDefinition({ resource: 'posts' });
+ */
+export declare const useResourceDefinition: (props?: UseResourceDefinitionOptions) => ResourceDefinition;
+export interface UseResourceDefinitionOptions {
+    readonly resource?: string;
+    readonly hasList?: boolean;
+    readonly hasEdit?: boolean;
+    readonly hasShow?: boolean;
+    readonly hasCreate?: boolean;
+    readonly recordRepresentation?: string | React.ReactElement | ((record: any) => string);
+}
+//# sourceMappingURL=useResourceDefinition.d.ts.map

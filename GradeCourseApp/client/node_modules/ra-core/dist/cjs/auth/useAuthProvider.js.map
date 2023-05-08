@@ -1,0 +1,1 @@
+{"version":3,"file":"useAuthProvider.js","sourceRoot":"","sources":["../../../src/auth/useAuthProvider.ts"],"names":[],"mappings":";;;;;;AAAA,+BAAmC;AAGnC,8DAAwC;AAE3B,QAAA,iBAAiB,GAAG;IAC7B,QAAQ,EAAE,QAAQ;IAClB,aAAa,EAAE,GAAG;CACrB,CAAC;AAEF;;GAEG;AACH,IAAM,eAAe,GAAG,cAEC,OAAA,IAAA,kBAAU,EAAC,qBAAW,CAAqB,EAA3C,CAA2C,CAAC;AAErE,kBAAe,eAAe,CAAC"}

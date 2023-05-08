@@ -1,0 +1,53 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.useGetResourceLabel = void 0;
+var inflection_1 = __importDefault(require("inflection"));
+var useResourceDefinitions_1 = require("./useResourceDefinitions");
+var i18n_1 = require("../i18n");
+/**
+ * A hook which returns function to get a translated resource name. It will use the label option of the `Resource` component if it was provided.
+ *
+ * @returns {GetResourceLabel} A function which takes a resource name and an optional number indicating the number of items (used for pluralization) and returns a translated string.
+ * @example
+ * const Menu = () => {
+ *     const resources = useResourceDefinitions();
+ *     const getResourceLabel = useGetResourceLabel();
+ *
+ *     return (
+ *         <ul>
+ *             {Object.keys(resources).map(name => (
+ *                 <li key={name}>
+ *                     {getResourceLabel(name, 2)}
+ *                 </li>
+ *             ))}
+ *         </ul>
+ *     )
+ * }
+ */
+var useGetResourceLabel = function () {
+    var translate = (0, i18n_1.useTranslate)();
+    var definitions = (0, useResourceDefinitions_1.useResourceDefinitions)();
+    return function (resource, count) {
+        if (count === void 0) { count = 2; }
+        var resourceDefinition = definitions[resource];
+        var label = translate("resources.".concat(resource, ".name"), {
+            smart_count: count,
+            _: resourceDefinition &&
+                resourceDefinition.options &&
+                resourceDefinition.options.label
+                ? translate(resourceDefinition.options.label, {
+                    smart_count: count,
+                    _: resourceDefinition.options.label,
+                })
+                : inflection_1.default.humanize(count > 1
+                    ? inflection_1.default.pluralize(resource)
+                    : inflection_1.default.singularize(resource)),
+        });
+        return label;
+    };
+};
+exports.useGetResourceLabel = useGetResourceLabel;
+//# sourceMappingURL=useGetResourceLabel.js.map

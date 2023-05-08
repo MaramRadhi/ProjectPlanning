@@ -1,0 +1,1 @@
+{"version":3,"file":"LocalesMenuButton.d.ts","sourceRoot":"","sources":["../../../src/button/LocalesMenuButton.tsx"],"names":[],"mappings":";AAOA;;;;;;;;;;;;;;;GAeG;AACH,eAAO,MAAM,iBAAiB,UAAW,sBAAsB,gBAuD9D,CAAC;AAIF,eAAO,MAAM,wBAAwB,IAAK,CAAC;AAO3C,MAAM,WAAW,sBAAsB;IACnC,SAAS,CAAC,EAAE;QAAE,MAAM,EAAE,MAAM,CAAC;QAAC,IAAI,EAAE,MAAM,CAAA;KAAE,EAAE,CAAC;CAClD"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"ShowActions.d.ts","sourceRoot":"","sources":["../../../src/detail/ShowActions.tsx"],"names":[],"mappings":";AACA,OAAO,SAAS,MAAM,YAAY,CAAC;AACnC,OAAO,EAAE,QAAQ,EAA2C,MAAM,SAAS,CAAC;AAK5E;;;;;;;;;;;;;;;;;;;;;;;;GAwBG;AACH,eAAO,MAAM,WAAW;YAAW,gBAAgB;;;;;CAWlD,CAAC;AAEF,MAAM,WAAW,gBAAgB;IAC7B,SAAS,CAAC,EAAE,MAAM,CAAC;IACnB,MAAM,CAAC,EAAE,QAAQ,CAAC;CACrB"}

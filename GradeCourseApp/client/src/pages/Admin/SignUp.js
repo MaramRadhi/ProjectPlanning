@@ -27,13 +27,6 @@ function Register() {
   var emailCookie = cookies.email;
   var tokenCookie = cookies.token;
 
-  useEffect(() => {
-    check();}
-    );
-  
-    const check = () => {if(!(emailCookie == null || tokenCookie == null)){
-  navigate("/")}}
-
   const register = async () => {
     alert("register");
     const response = await axios.post("http://localhost:3001/api/register", {

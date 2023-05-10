@@ -462,20 +462,19 @@ app.get("/api/accountData", (req, res) => {
 
 //Get course_name, course_code, avg_pass, avg_fail, course_outcomes for the course section from the database
 app.get("/api/courseSummaryData", (req, res) => {
-  var sql = `select c.course_code, c.course_name, c.outcomes from course c where (c.course_code = ?)`;
-  con.query(sql, [code],
-    function (err, result, fields) {
-      if (err) {
-        console.log(err);
-        throw err;
-      }
-      else {
-        console.log(result);
-        res.send(result);
-      }
+  var code = req.query.code;
+  var sql = `SELECT Course.course_code, Course.course_name, Course.outcomes, Course.passrate FROM Course WHERE Course.course_name = ?`;
+  con.query(sql, [code], function (err, result, fields) {
+    if (err) {
+      console.log(err);
+      throw err;
+    } else {
+      console.log(result);
+      res.send(result);
     }
-  );
+  });
 });
+
 
   app.listen(3001, () => {
     // start the server

@@ -10,6 +10,9 @@ function Table(props) {
     navigate("student", { state: props.props[i] }); // navigate to the student page and send the student data (props.props[i] [one specific student object]) to the student page
   };
 
+  const toSummary = (i) => {
+    navigate("summary", { state: props.props[i] }); // navigate to the summary page and send the student data (props.props[i] [one specific student object]) to the summary page
+  };
   function header(index) {
     switch (index) {
       case 1:
@@ -102,14 +105,14 @@ function Table(props) {
             {content.map((e) => (
               <tr
                 onClick={() => {
-                  toStudent(parseInt(e.no - 1));
+                  //toSummary(parseInt(e.no - 1));
                 }}
               >
                 {" "}
                 <th scope="row">{e.no}</th> <td>{e.student_id}</td>
                 <td>{e.student_fname}</td>
                 <td>{e.course_name}</td>  
-                <td>{(0.2*(e.quiz_1 + e.quiz_2 + e.quiz_3 + e.quiz_4)/4)+(0.2*(e.homework_1 + e.homework_2)/2)+(0.3*(e.midterm))+(0.3*(e.exam))}</td>
+                <td>{((0.2*(e.quiz_1 + e.quiz_2 + e.quiz_3 + e.quiz_4)/4)+(0.2*(e.homework_1 + e.homework_2)/2)+(0.3*(e.midterm))+(0.3*(e.exam))).toFixed(2)}</td>
                 <td>{letterGrade((0.2*(e.quiz_1 + e.quiz_2 + e.quiz_3 + e.quiz_4)/4)+(0.2*(e.homework_1 + e.homework_2)/2)+(0.3*(e.midterm))+(0.3*(e.exam)))}</td>
               </tr>
             ))}

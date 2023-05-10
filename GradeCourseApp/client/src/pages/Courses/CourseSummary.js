@@ -11,8 +11,7 @@ export default function CourseSummary() {
   const [courseList, setCourseList] = useState([]);
   
   const getCourseList = async () => { 
-    return (Axios.get("http://localhost:3001/api/courseSummaryData", {
-    }).then((response) => {
+    return (Axios.get("http://localhost:3001/api/courseSummaryData", {params: {code: location.state.name}}).then((response) => {
       setCourseList(response.data);
     }));
   }
@@ -50,7 +49,7 @@ export default function CourseSummary() {
                   <div>
                   <p><b>Course Name: </b>{course.course_name}</p>
                   <p><b>Course Code: </b>{course.course_code}</p>
-                  <p><b>Pass Rate: </b>{course.pass_rate} <b>Fail Rate: </b>{course.fail_rate}</p>
+                  <p><b>Pass Rate: </b>{course.passrate} %</p>
                   <p><b>Course Outcomes: </b>{course.outcomes}</p>
                   </div>
                 );

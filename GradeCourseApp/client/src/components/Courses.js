@@ -34,7 +34,11 @@ function Courses(props) { /*props is the data that we send to the this component
     const pickPage = () => {
         if(props.code == 1){
             toCoursPage()
-        }else{
+        }
+        else if(props.code ==3){
+            navigate("/register");}
+
+        else{
             toCourse()
         }
     }

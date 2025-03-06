@@ -18,7 +18,8 @@ This is a grade management application for AUBH following the SCRUM methodology.
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/imrun10/GradeCourseApp.git
+    git clone https://github.com/MaramRadhi/ProjectPlanning.git
+    cd ProjectPlanning
     cd GradeCourseApp
     ```
 

@@ -103,8 +103,6 @@ server/
     connection.js
     package.json
     server.js
-    updatedServer.js
-server.js
 users.sql
 ```
 
